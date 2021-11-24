@@ -23,3 +23,19 @@ export const createTodo = async (req, res) => {
     });
   }
 };
+
+export const deleteTodo = async (req, res) => {
+  try {
+    // const del = await TodoModel.findByIdAndDelete();
+    // console.log(req.body.id);
+    let idTodo = req.body.id;
+    await TodoModel.findByIdAndDelete(idTodo);
+    res.status(200).json({
+      message: idTodo + " deleted",
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: error.message,
+    });
+  }
+};

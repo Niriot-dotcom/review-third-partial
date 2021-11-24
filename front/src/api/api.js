@@ -9,3 +9,7 @@ export const getTodos = () => {
 export const createTodo = (newTodo) => {
   axios.post(URL, newTodo);
 };
+
+export const deleteTodo = (idTodo) => {
+  axios.post(URL + "/del", idTodo);
+};
