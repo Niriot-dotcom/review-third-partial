@@ -31,25 +31,36 @@ function Todo(props) {
             </div> */}
           </div>
         </li>
-        {props.todos.map((todo, index) => {
-          // console.log("id todo: ", todo._id);
-          return (
-            <li key={index} class="collection-item">
-              <div>
-                <span>
-                  {todo.title}: {todo.content}
-                </span>
-                <a
-                  onClick={() => handleDelete(todo._id)}
-                  class="secondary-content delete"
-                  onmouseover="this.style.cursor='pointer';"
-                >
-                  <i class="material-icons">delete</i>
-                </a>
-              </div>
-            </li>
-          );
-        })}
+        {props.todos ? (
+          props.todos.map((todo, index) => {
+            // console.log("id todo: ", todo._id);
+            return (
+              <li key={index} class="collection-item">
+                <div>
+                  <span>
+                    {todo.title}: {todo.content}
+                  </span>
+                  <a
+                    onClick={() => handleDelete(todo._id)}
+                    class="secondary-content delete"
+                    onmouseover="this.style.cursor='pointer';"
+                  >
+                    <i class="material-icons">delete</i>
+                  </a>
+                </div>
+              </li>
+            );
+          })
+        ) : (
+          <div>
+            <h3>There are no todos</h3>
+            <h5>
+              Please verify your .env file (you can copy it from the
+              .env-example).
+            </h5>
+            <h5>Or create a new one if your .env file is okay.</h5>
+          </div>
+        )}
       </ul>
     </div>
   );
